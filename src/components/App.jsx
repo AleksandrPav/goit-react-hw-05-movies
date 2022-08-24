@@ -1,8 +1,18 @@
+import Trending from "./pages/Tranding";
+
+
+
+
+
+
+
+
+
 export const App = () => {
   return (
     <div
       style={{
-        height: '100vh',
+        minHeight: '100vh',
         display: 'flex',
         justifyContent: 'center',
         alignItems: 'center',
@@ -10,7 +20,10 @@ export const App = () => {
         color: '#010101'
       }}
     >
-      React homework template
+      <Trending
+        
+      />
+     
     </div>
   );
 };
