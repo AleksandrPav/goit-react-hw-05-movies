@@ -1,0 +1,29 @@
+.Menu{
+    border-bottom: 5px solid #2c3e50;
+    padding-bottom: 10px;
+    background: linear-gradient(to right, #8e0e00, #1f1c18);
+}
+
+.items{
+    display: flex;
+    align-items: center;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.link{
+    color: #fff;
+    font-size: larger;
+    text-decoration: none;
+    transition: color 0.3s ease-in-out;
+    margin-left: 50px;
+}
+
+.link:hover{
+    color: rgb(20, 17, 17);
+}
+
+.link.active{
+    color: rgb(20, 17, 17);
+}
