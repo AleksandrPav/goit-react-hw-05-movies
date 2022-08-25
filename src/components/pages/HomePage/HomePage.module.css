@@ -1,29 +1,22 @@
 .container{
-    margin-top: 50px;
+    margin-top: 25px;
+    margin-left: 50px;
     width: auto;
     height: 100%;
-    display: flex;
 }
 
+.mainTitle{
+    font-size: 50px;
+    font-weight: bold;
+    margin:0;
+}
 
 
 .items{
     list-style: none;
-    margin: 15px 0 15px 50px;
-    border: 1px solid black;
-    border-radius: 5px;
-    padding: 5px;
-    background-color: aliceblue;
-    
+    margin: 15px 0;
+    padding: 0;
 }
-.items:hover .moviesImage{
-    background-color: #f2f2f2;
-    display: block;
-    top:50%;
-    right: 20%;
-    transform: translate(20%, -50%);
-}
-
 
 
 .itemLink{
@@ -39,6 +32,11 @@
     fill: rgb(241, 85, 85);
     color: rgb(241, 85, 85);
 }
+.itemLink:hover .moviesImage{
+    top: 50%;
+    right: 20%;
+    transform: translate(20%, -50%);
+}
 
     
 
@@ -49,6 +47,7 @@
     width: 30px;
     height: 30px;
     fill: black;
+    transition: fill 0.3s ease-in-out;
 }
 
 .title{
@@ -56,12 +55,14 @@
     font-weight: bold;
     margin: 0 10px 0 0;
     color: black;
+    transition: color 0.3s ease-in-out;
 }
 
 .text{
     font-size: 20px;
     color: #666;
     margin: 0;
+    transition: color 0.3s ease-in-out;
 }
 
 .moviesImage{
@@ -73,5 +74,4 @@
     transition: all 1s;
     overflow: hidden;
   
-
 }
