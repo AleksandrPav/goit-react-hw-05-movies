@@ -5,10 +5,19 @@ const URL = "https://api.themoviedb.org/3/";
 const OPTIONS = "trending/movie/day"
 
 const getTrendingMovies = async () => {
-    const response = await axios.get(`${URL}${OPTIONS}?api_key=${API_KEY}`);
-    return response.data.results;
+    const {data} = await axios.get(`${URL}${OPTIONS}?api_key=${API_KEY}`);
+    return data.results;
 }
 
-export default getTrendingMovies;
+const getMovieDetails = async (id) => {
+
+    const { data } = await axios.get(`${URL}movie/${id}?api_key=${API_KEY}`);
     
-console.log(getTrendingMovies());
+    return data;
+}
+
+console.log(getMovieDetails());
+
+
+export { getTrendingMovies, getMovieDetails };
+

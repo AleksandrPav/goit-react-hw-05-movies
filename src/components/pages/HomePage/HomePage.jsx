@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import getTrendingMovies from 'components/services/API';
+import {getTrendingMovies} from 'components/services/API';
 import css from './HomePage.module.css';
 import { BiCameraMovie } from 'react-icons/bi';
 import { Link } from 'react-router-dom';
