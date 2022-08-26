@@ -44,7 +44,6 @@ export default function HomePage() {
                             <Link to={`/movies/${id}`} className={css.itemLink}>
                             <span className={css.iconItem}><BiCameraMovie className={css.icon} /></span>
                             <h3 className={css.title}>{title}</h3>
-                            <p className={css.text}>(Release Date: {release_date})</p>
                             <img src={`${moviesImage}${poster_path}`} alt={title} className={css.moviesImage} />
                             </Link>
                         </li>
