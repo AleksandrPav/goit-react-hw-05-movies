@@ -9,14 +9,18 @@ const getTrendingMovies = async () => {
     return data.results;
 }
 
-const getMovieDetails = async (id) => {
 
-    const { data } = await axios.get(`${URL}movie/${id}?api_key=${API_KEY}`);
-    
+
+const getMovieDetails = async (movieId) => {
+    if (!movieId) {
+        return;
+    }
+    const { data } = await axios.get(`${URL}movie/${movieId}?api_key=${API_KEY}`);
     return data;
+    
 }
 
-console.log(getMovieDetails());
+
 
 
 export { getTrendingMovies, getMovieDetails };

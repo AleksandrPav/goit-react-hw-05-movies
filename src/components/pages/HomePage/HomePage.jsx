@@ -39,7 +39,7 @@ export default function HomePage() {
             <div className={css.row}>
                 <h2 className={css.mainTitle}>Trending today</h2>
                 <ul className={css.items} >
-                {movies.map(({id, title, release_date, poster_path}) => (
+                {movies.map(({id, title, poster_path}) => (
                         <li className={css.item} key={id}>
                             <Link to={`/movies/${id}`} className={css.itemLink}>
                             <span className={css.iconItem}><BiCameraMovie className={css.icon} /></span>

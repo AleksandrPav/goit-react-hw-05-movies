@@ -1,8 +1,12 @@
 .container{
+   
     margin-top: 25px;
     margin-left: 50px;
     width: auto;
     height: 100%;
+}
+.row{
+   
 }
 
 .mainTitle{
@@ -48,8 +52,9 @@
 }
 
 .itemLink:hover .moviesImage{
-    right: 500px;
-    top: 125px;
+  display: block;
+
+    
 }
 
     
@@ -73,10 +78,14 @@
 
 .moviesImage{
     position: fixed;
-    width: auto;
     border-radius: 25px;
-    transition: all 1s;
+    transition: display 10s ease-in-out;
     overflow: hidden;
-    right: -500px;
-    top: 125px;
+    margin-left: 600px;
+    display: none;
+    height: 40vw;
+
+
+ 
+   
 }
