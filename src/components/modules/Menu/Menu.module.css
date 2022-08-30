@@ -26,4 +26,5 @@
 
 .link.active{
     color: rgb(20, 17, 17);
+    cursor: default;
 }

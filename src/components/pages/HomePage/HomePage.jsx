@@ -2,10 +2,8 @@ import React, { useState, useEffect } from 'react';
 import {getTrendingMovies} from 'components/services/API';
 import css from './HomePage.module.css';
 import { BiCameraMovie } from 'react-icons/bi';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import Loader from 'components/modules/Loader/Loader';
-
-const moviesImage = 'https://image.tmdb.org/t/p/w500';
 
 
 
@@ -13,6 +11,9 @@ export default function HomePage() {
     const [movies, setMovies] = useState([]);
     const [error, setError] = useState(null);
     const [loading, setLoading] = useState(false);
+    const location = useLocation();
+
+    console.log(location);
 
 
     useEffect(() => {
@@ -41,10 +42,10 @@ export default function HomePage() {
                 <ul className={css.items} >
                 {movies.map(({id, title, poster_path}) => (
                         <li className={css.item} key={id}>
-                            <Link to={`/movies/${id}`} className={css.itemLink}>
+                            <Link state={{from: location}} to={`/movies/${id}`} className={css.itemLink}>
                             <span className={css.iconItem}><BiCameraMovie className={css.icon} /></span>
                             <h3 className={css.title}>{title}</h3>
-                            <img src={`${moviesImage}${poster_path}`} alt={title} className={css.moviesImage} />
+                            <img src={`https://image.tmdb.org/t/p/w500/${poster_path}`} alt={title} className={css.moviesImage} />
                             </Link>
                         </li>
                 ))}

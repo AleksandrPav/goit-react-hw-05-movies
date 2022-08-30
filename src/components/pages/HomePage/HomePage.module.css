@@ -52,9 +52,9 @@
 }
 
 .itemLink:hover .moviesImage{
-  display: block;
-
-    
+ 
+  top: 150px;
+    margin-left: 50vmax;
 }
 
     
@@ -79,11 +79,11 @@
 .moviesImage{
     position: fixed;
     border-radius: 25px;
-    transition: display 10s ease-in-out;
+    transition: all 1s ease-in-out;
     overflow: hidden;
-    margin-left: 600px;
-    display: none;
+    margin-left: 100vmax;
     height: 40vw;
+    top: 150px;
 
 
  

@@ -1,19 +1,32 @@
 import React, { useState, useEffect } from 'react';
-import { useParams} from 'react-router-dom';
+import { useParams, useLocation, useNavigate, Outlet, NavLink} from 'react-router-dom';
 import css from "./MovieDetails.module.css";
 import { getMovieDetails } from "../../services/API";
 import Loader from 'components/modules/Loader/Loader';
+import GoBackBtn from 'components/modules/Button/GoBackBtn';
 
 
-const moviesImage = 'https://image.tmdb.org/t/p/w500'
+
 
 const MovieDetails = () => {
     const [movie, setMovie] = useState([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(false);
     const { movieId } = useParams();
-   
+    const location = useLocation();
+    const navigate = useNavigate();
 
+    const getClassName = ({ isActive }) => {
+    const className = isActive ? `${css.link} ${css.active}` : css.link;
+    return className;
+    }
+    
+    console.log(location);
+    const { from } = location.state;
+
+
+   
+    const goBack = () => navigate(from);
     
     
 
@@ -27,48 +40,50 @@ const MovieDetails = () => {
                     setLoading(false);
                 } catch (error) {
                     setError(true);
+                    Promise.reject(error);
+
                 }
                 finally {
                     setLoading(false);
+
                 }
             }
-            fetchData();
-        
-        
+        fetchData();
     }, [movieId]);
 
-    console.log(movie);
 
-    const { title, poster_path, release_date, vote_average, overview, genres } = movie;
+    const { title, poster_path, release_date, vote_average, overview, genres, id } = movie;
 
     return (
         <div className={css.container}>
         {loading && <Loader />}
-        {error && <h1 className={css.error}>Error</h1>}
-            <div>
-                <button>Go Back</button>
-                <div>
-                    <img src={`${moviesImage}${poster_path}`} alt={title} className={css.moviesImage} />
+            {error && <h1 className={css.error}>Error</h1>}
+            <div className={css.containerItems}>
+            <div className={css.containerImage}>
+               <GoBackBtn onClick={goBack}/>
+                <div className={css.images}>
+                    <img src={`https://image.tmdb.org/t/p/w500${poster_path}`} alt={title} className={css.moviesImage} />
                 </div>
-                <div>
-                    <h2>{title}</h2>
-                    <p>{ release_date}</p>
-                    <p>User Score: {(vote_average * 10).toFixed(2)}%</p>
-                    <h3>Overview</h3>
-                    <p>{overview}</p>
-                    <h3>Genres</h3>
-                    <ul>
+                </div>
+                <div className={css.info}>
+                    <h2 className={css.title}>{title}</h2>
+                    <p className={css.text}>{ release_date}</p>
+                    <p className={css.text}>User Score: {(vote_average * 10).toFixed(2)}%</p>
+                    <h3 className={css.title}>Overview</h3>
+                    <p className={css.text}>{overview}</p>
+                    <h3 className={css.title}>Genres</h3>
+                    <ul className={css.genres}>
                         {genres && genres.map(({ id, name }) => (
-                            <li key={id}>{name}</li>
+                            <li className={css.genresItem} key={id}><p className={css.genresText}>{name}</p></li>
                         ))}
                     </ul>
-
                 </div>
-
+                </div>
+                <NavLink state={from} onClick={goBack} to={`/movies/${id}/cast`} className={getClassName}>Cast</NavLink>
+            <Outlet />
         </div>
-            
-            
-      </div>
+        
+        
     );
 }
 

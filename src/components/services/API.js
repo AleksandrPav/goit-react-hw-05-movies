@@ -17,11 +17,18 @@ const getMovieDetails = async (movieId) => {
     }
     const { data } = await axios.get(`${URL}movie/${movieId}?api_key=${API_KEY}`);
     return data;
-    
+}
+
+const getMovieCast = async (movieId) => {
+    if (!movieId) {
+        return;
+    }
+    const { data } = await axios.get(`${URL}movie/${movieId}/credits?api_key=${API_KEY}`);
+    return data.cast;
 }
 
 
 
 
-export { getTrendingMovies, getMovieDetails };
+export { getTrendingMovies, getMovieDetails , getMovieCast};
 

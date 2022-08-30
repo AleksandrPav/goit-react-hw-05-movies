@@ -1,0 +1,45 @@
+.container{
+    padding-top: 20px;
+    
+}
+
+.list{
+    list-style: none;
+    display: flex;
+    justify-content:flex-start;
+    align-items: center;
+    flex-wrap: wrap;
+    padding: 0;
+}
+
+.item{
+    margin: 0 10px 20px 10px;
+    width: 200px;
+    height: 425px;
+    border-radius: 5px;
+    overflow: hidden;
+    box-shadow: 0 0 10px rgba(0,0,0,0.5);
+    transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.item:hover{
+    transform: scale(1.03);
+}
+
+.image{
+    width: 200px;
+    height:300px;
+    border-radius: 5px;
+}
+
+.name{
+    font-size: 20px;
+    font-weight: 700;
+    text-align: center;
+    margin-top: 10px;
+}
+.character{
+    font-size: 16px;
+    text-align: center;
+    margin-top: 10px;
+}
