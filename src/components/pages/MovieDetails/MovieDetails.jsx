@@ -28,6 +28,7 @@ const MovieDetails = () => {
    
     const goBack = () => navigate(from);
     
+    console.log(location);
     
 
     useEffect(() => {
@@ -78,9 +79,12 @@ const MovieDetails = () => {
                         ))}
                     </ul>
                 </div>
-                </div>
-                <NavLink state={from} onClick={goBack} to={`/movies/${id}/cast`} className={getClassName}>Cast</NavLink>
+            </div>
+            <div className={css.navLink}>
+            <NavLink state={{ from }} to={`/movies/${id}/cast`} className={getClassName}>Cast</NavLink>
+            <NavLink state={{ from }} to={`/movies/${id}/reviews`} className={getClassName}>Reviews</NavLink>
             <Outlet />
+            </div>
         </div>
         
         

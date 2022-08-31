@@ -27,8 +27,16 @@ const getMovieCast = async (movieId) => {
     return data.cast;
 }
 
+const getMovieReviews = async (movieId) => {
+    if (!movieId) {
+        return;
+    }
+    const { data } = await axios.get(`${URL}movie/${movieId}/reviews?api_key=${API_KEY}`);
+    return data.results;
+}
 
 
 
-export { getTrendingMovies, getMovieDetails , getMovieCast};
+
+export { getTrendingMovies, getMovieDetails , getMovieCast, getMovieReviews};
 

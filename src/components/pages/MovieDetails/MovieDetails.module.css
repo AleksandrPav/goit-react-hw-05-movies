@@ -1,6 +1,7 @@
 .container{
     padding: 50px 20px;
     max-width: 1140px;
+
 }
 .containerImage{
     display: flex;
@@ -10,7 +11,7 @@
 }
 .containerItems{
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
     align-items: flex-start;
 
 }
@@ -18,7 +19,7 @@
 
 .images img{
     min-width:100%;
-    min-height: 100%;
+    max-height: 600px;
     object-fit: cover;
     border-radius: 5px;
 }
@@ -26,7 +27,7 @@
 .info{
     margin-top: 58px;
     color: #000;
-    min-width: 100%;
+    
 }
 
 .title{
@@ -72,6 +73,10 @@
     margin: 0 ;
 }
 
+.navLink{
+    margin-top: 25px;
+}
+
 .link {
     padding: 10px 20px;
     border: none;
@@ -83,7 +88,12 @@
     cursor: pointer;
     text-decoration: none;
     transition: all 0.3s ease;
+    box-sizing: border-box;
 }
+.link:nth-of-type(1){
+    margin-right: 25px;
+}
+
 
 .link:hover {
     background-color: #000;
