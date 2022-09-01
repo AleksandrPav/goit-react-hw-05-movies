@@ -35,7 +35,7 @@ const Reviews = () => {
             <ul className={css.list}>
                 {reviews.map(({ id, author, content }) => (
                     <li key={id} className={css.item}>
-                        <p className={css.author}>{author}</p>
+                        <p className={css.author}><span>Author: </span> {author}</p>
                         <p className={css.content}>{content}</p>
                     </li>
                 ))}

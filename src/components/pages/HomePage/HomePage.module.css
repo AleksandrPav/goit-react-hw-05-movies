@@ -52,8 +52,7 @@
 }
 
 .itemLink:hover .moviesImage{
- 
-  top: 150px;
+    top: 100px;
     margin-left: 50vmax;
 }
 
@@ -83,7 +82,7 @@
     overflow: hidden;
     margin-left: 100vmax;
     height: 40vw;
-    top: 150px;
+    top: 100px;
 
 
  

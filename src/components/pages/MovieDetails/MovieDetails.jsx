@@ -57,14 +57,12 @@ const MovieDetails = () => {
 
     return (
         <div className={css.container}>
+        <GoBackBtn onClick={goBack}/>
         {loading && <Loader />}
             {error && <h1 className={css.error}>Error</h1>}
             <div className={css.containerItems}>
-            <div className={css.containerImage}>
-               <GoBackBtn onClick={goBack}/>
                 <div className={css.images}>
-                    <img src={`https://image.tmdb.org/t/p/w500${poster_path}`} alt={title} className={css.moviesImage} />
-                </div>
+                    <img src={(poster_path && `https://image.tmdb.org/t/p/w500/${poster_path}`) || "https://pbs.twimg.com/media/C5OTOt3UEAAExIk.jpg"} alt={title} className={css.moviesImage} />
                 </div>
                 <div className={css.info}>
                     <h2 className={css.title}>{title}</h2>
@@ -72,7 +70,7 @@ const MovieDetails = () => {
                     <p className={css.text}>User Score: {(vote_average * 10).toFixed(2)}%</p>
                     <h3 className={css.title}>Overview</h3>
                     <p className={css.text}>{overview}</p>
-                    <h3 className={css.title}>Genres</h3>
+                    <h3 className={css.titleGenres}>Genres</h3>
                     <ul className={css.genres}>
                         {genres && genres.map(({ id, name }) => (
                             <li className={css.genresItem} key={id}><p className={css.genresText}>{name}</p></li>
