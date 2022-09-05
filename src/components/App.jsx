@@ -1,4 +1,7 @@
-import {Routes, Route} from 'react-router-dom';
+import { Routes, Route } from 'react-router-dom';
+import { ToastContainer} from 'react-toastify';
+  import 'react-toastify/dist/ReactToastify.css';
+
 
 import css from "./App.module.css";
 import Menu from "./modules/Menu/Menu";
@@ -8,6 +11,7 @@ import MovieDetails from './pages/MovieDetails/MovieDetails';
 import CastPage from './pages/CastPage/CastPage';
 import ReviewsPage from './pages/ReviewsPage/ReviewsPage';
 import NotFoundPage from './pages/NotFoundPage/NotFoundPage';
+
 
 
 
@@ -25,6 +29,19 @@ const App = () => {
         </Route>
         <Route path="*" element={<NotFoundPage />} />
       </Routes>
+       <ToastContainer
+        position="top-right"
+        fontSize="5px"
+            autoClose={5000}
+            hideProgressBar={false}
+            newestOnTop={false}
+            closeOnClick
+            rtl={false}
+            pauseOnFocusLoss
+            draggable
+            pauseOnHover
+            theme="dark"
+            />
     </section>
   );
 };

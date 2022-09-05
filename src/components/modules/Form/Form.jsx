@@ -1,12 +1,40 @@
-import React from "react";
+import React, { useState } from "react";
+import css from "./Form.module.css";
+
+import { toast } from "react-toastify";
 
 
-export default function Form(search, onFormSubmit) {
+export default function Form({onSubmit}) {
+    const [search, setSearch] = useState("");
+    
+    const handleChange = (e) => {
+        setSearch(e.target.value);
+    };
+
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        onSubmit(search);
+        if (search.trim() === "") {
+            toast.error("Please enter your search");
+            return;
+        }
+    };
+
+    
+
     return (
-        <form action="" onSubmit={onFormSubmit}>
-            <button type="button" >Search</button>
-            <input type="text" value={search} onChange={onFormSubmit} />
-        </form>
-
+        <div className={css.formContainer}>
+        <form onSubmit={handleSubmit} className={css.form}>
+            <input 
+                type="text"
+                name="search"
+                value={search}
+                onChange={handleChange}
+                    placeholder="Search movies"
+                    className={css.input}
+            />
+            <button type="submit" className={css.button} >Search</button>
+            </form>
+            </div>
     );
 }

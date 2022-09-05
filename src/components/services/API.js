@@ -4,8 +4,12 @@ const API_KEY = "2ad314a52028ffb1db124a28b0df35b2";
 const URL = "https://api.themoviedb.org/3/";
 const OPTIONS = "trending/movie/day"
 
-const getMovie = async (name) => {
-    const { data } = await axios.get(`${URL}search/movie?api_key=${API_KEY}&query=${name}`);
+const getMovie = async (query) => {
+    const { data } = await axios.get(`${URL}search/movie?api_key=${API_KEY}&query=${query}`, {
+        params: {
+            query: query,
+        },
+    });
     return data.results;
 }
 
