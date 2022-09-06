@@ -34,7 +34,8 @@ const Cast = () => {
     return (
         <div className={css.container}>
         {loading && <Loader />}
-        {error && <h1 className={css.error}>Error</h1>}
+            {error && <h1 className={css.error}>Error</h1>}
+            {cast.length < 1 ? <h1 className={css.error}>No cast</h1> : (
         <ul className={css.list}>
             {cast.map(({ id, name, profile_path, character }) => (
             <li key={id} className={css.item}>
@@ -47,7 +48,7 @@ const Cast = () => {
                 <p className={css.character}>Character: {character}</p>
             </li>
             ))}
-        </ul>
+        </ul>)}
         </div>
     );
    

@@ -16,7 +16,6 @@ export default function Movies() {
     const [movies, setMovies] = useState([]);
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState(null);
-    const [notFound, setNotFound] = useState(false);
 
 
     const location = useLocation();
@@ -35,18 +34,11 @@ export default function Movies() {
         if (!search) {
             return;
         }
-
-        
         const fetchData = async () => {
             try {
                 setLoading(true);
                 const result = await getMovie(search);
-                setMovies(result);
-
-                if (result.length === 0) {
-                    setNotFound(true);
-                }
-                
+                setMovies(result);               
 
             } catch (error) {
                 setError(error);
@@ -61,6 +53,8 @@ export default function Movies() {
     
     }, [search]);
 
+ 
+
 
     return (
         
@@ -68,7 +62,7 @@ export default function Movies() {
             <Form onSubmit={handleSubmit} />
             {loading && <Loader />}
             {error && <h1 className={css.error}>Error</h1>}
-            {notFound && <h1 className={css.notFound}>Search with name <span>"{search}"</span> not found</h1>}
+            {movies.length < 1 && <h1 className={css.notFound}>No results found</h1>}
             <div className={css.row}>
                 <ul className={css.items}>
                     {movies.map(({ id, title }) => (
@@ -86,9 +80,13 @@ export default function Movies() {
                 </ul>
             </div>
         </div>
+
+       
         
     );
+    
 }
+
 
 Movies.propTypes = {
     movies: PropTypes.arrayOf(

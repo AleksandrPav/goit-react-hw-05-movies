@@ -34,6 +34,7 @@ const Reviews = () => {
         <div className={css.container}>
             {loading && <Loader />}
             {error && <h1 className={css.error}>Error</h1>}
+            {reviews.length < 1 ? <h1 className={css.error}>No reviews</h1> : (
             <ul className={css.list}>
                 {reviews.map(({ id, author, content }) => (
                     <li key={id} className={css.item}>
@@ -41,7 +42,7 @@ const Reviews = () => {
                         <p className={css.content}>{content}</p>
                     </li>
                 ))}
-            </ul>
+            </ul>)}
         </div>
     );
 }

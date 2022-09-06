@@ -6,22 +6,29 @@ import PropTypes from "prop-types";
 import { toast } from "react-toastify";
 
 
+
 export default function Form({onSubmit}) {
     const [search, setSearch] = useState("");
     
     const handleChange = (e) => {
         setSearch(e.target.value);
+        
     };
 
     const handleSubmit = (e) => {
         e.preventDefault();
         onSubmit(search);
         if (search.trim() === "") {
-            toast.warn("Please enter your search");
+            toast.error("Please enter your search");
             return;
         }
+        formReset();
+
     };
 
+    const formReset = () => {
+        setSearch("");
+    };
     
 
     return (
