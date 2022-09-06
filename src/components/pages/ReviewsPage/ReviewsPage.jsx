@@ -4,6 +4,8 @@ import css from "./Reviews.module.css";
 import { getMovieReviews } from "../../services/API";
 import Loader from 'components/modules/Loader/Loader';
 
+import PropTypes from "prop-types";
+
 
 const Reviews = () => {
     const [reviews, setReviews] = useState([]);
@@ -43,5 +45,13 @@ const Reviews = () => {
         </div>
     );
 }
+
+Reviews.propTypes = {
+    reviews: PropTypes.arrayOf(
+        PropTypes.shape({
+            id: PropTypes.number.isRequired,
+        })
+    ),
+};
 
 export default Reviews;

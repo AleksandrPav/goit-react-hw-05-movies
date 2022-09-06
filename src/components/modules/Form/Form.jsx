@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import css from "./Form.module.css";
 
+import PropTypes from "prop-types";
+
 import { toast } from "react-toastify";
 
 
@@ -15,7 +17,7 @@ export default function Form({onSubmit}) {
         e.preventDefault();
         onSubmit(search);
         if (search.trim() === "") {
-            toast.error("Please enter your search");
+            toast.warn("Please enter your search");
             return;
         }
     };
@@ -38,3 +40,7 @@ export default function Form({onSubmit}) {
             </div>
     );
 }
+
+Form.propTypes = {
+    onSubmit: PropTypes.func.isRequired,
+};

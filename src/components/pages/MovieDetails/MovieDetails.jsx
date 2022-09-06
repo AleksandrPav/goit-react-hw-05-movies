@@ -1,9 +1,11 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect} from 'react';
 import { useParams, useLocation, useNavigate, Outlet, NavLink} from 'react-router-dom';
 import css from "./MovieDetails.module.css";
 import { getMovieDetails } from "../../services/API";
 import Loader from 'components/modules/Loader/Loader';
 import GoBackBtn from 'components/modules/Button/GoBackBtn';
+
+import PropTypes from "prop-types";
 
 
 
@@ -21,14 +23,10 @@ const MovieDetails = () => {
     return className;
     }
     
-    console.log(location);
     const { from } = location.state;
 
-
-   
     const goBack = () => navigate(from);
-    
-    console.log(location);
+
     
 
     useEffect(() => {
@@ -80,14 +78,36 @@ const MovieDetails = () => {
             </div>
             <div className={css.navLink}>
             <NavLink state={{ from }} to={`/movies/${id}/cast`} className={getClassName}>Cast</NavLink>
-            <NavLink state={{ from }} to={`/movies/${id}/reviews`} className={getClassName}>Reviews</NavLink>
-            <Outlet />
+                <NavLink state={{ from }} to={`/movies/${id}/reviews`} className={getClassName}>Reviews</NavLink>
+            
+                    <Outlet />
+             
             </div>
         </div>
         
         
     );
 }
+
+
+MovieDetails.propTypes = {
+    movie: PropTypes.object,
+    loading: PropTypes.bool,
+    error: PropTypes.bool,
+    movieId: PropTypes.string,
+    location: PropTypes.object,
+    navigate: PropTypes.func,
+    from: PropTypes.object,
+    goBack: PropTypes.func,
+    getClassName: PropTypes.func,
+    title: PropTypes.string,
+    poster_path: PropTypes.string,
+    release_date: PropTypes.string,
+    vote_average: PropTypes.number,
+    overview: PropTypes.string,
+    genres: PropTypes.array,
+    id: PropTypes.number,
+};
 
 
     

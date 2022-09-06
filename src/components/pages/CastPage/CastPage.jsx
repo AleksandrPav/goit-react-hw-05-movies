@@ -3,6 +3,8 @@ import { getMovieCast } from "../../services/API";
 import { useParams} from "react-router-dom";
 import Loader from 'components/modules/Loader/Loader';
 
+
+
 import css from "./Cast.module.css";
 
 
@@ -12,13 +14,6 @@ const Cast = () => {
     const [error, setError] = useState(false);
     const { movieId } = useParams();
 
-    console.log(cast);  
-
-
-
-    
-
-    
     useEffect(() => {
         setLoading(true);
         const fetchData = async () => {
@@ -57,5 +52,10 @@ const Cast = () => {
     );
    
 }
+
+
+
+
+
    
 export default Cast;

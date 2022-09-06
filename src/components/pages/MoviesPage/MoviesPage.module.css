@@ -53,3 +53,16 @@
     color: white;
     transition: color 0.3s ease-in-out;
 }
+
+.notFound {
+    margin-top: 100px;
+    text-align: center;
+    font-size: 30px;
+    font-weight: bold;
+    color: #cb2d3e;
+}
+
+.notFound span {
+    color: rgb(2, 2, 2);
+    font-size: 40px;
+}

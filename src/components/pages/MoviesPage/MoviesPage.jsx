@@ -6,6 +6,8 @@ import css from "./MoviesPage.module.css";
 import { Link, useSearchParams, useLocation } from "react-router-dom";
 import { BiCameraMovie } from 'react-icons/bi';
 
+import PropTypes from "prop-types";
+
 
 
 
@@ -14,6 +16,7 @@ export default function Movies() {
     const [movies, setMovies] = useState([]);
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState(null);
+    const [notFound, setNotFound] = useState(false);
 
 
     const location = useLocation();
@@ -23,22 +26,10 @@ export default function Movies() {
     const search = searchParams.get("query");
 
 
-
-
     const handleSubmit = (search) => {
         setSearchParams({ query: search });
     };
 
-    const notFound = () => {
-        return (
-            <div className={css.notFound}>
-                <h2>Nothing found</h2>
-                <p>Try again</p>
-            </div>
-        );
-    };
-
-    
 
     useEffect(() => {
         if (!search) {
@@ -52,6 +43,11 @@ export default function Movies() {
                 const result = await getMovie(search);
                 setMovies(result);
 
+                if (result.length === 0) {
+                    setNotFound(true);
+                }
+                
+
             } catch (error) {
                 setError(error);
                 Promise.reject(error);
@@ -60,22 +56,19 @@ export default function Movies() {
             }
         };
         fetchData();
+
+        
     
     }, [search]);
 
-    
-    
 
-
-    console.log(movies);
-    
     return (
         
         <div className={css.container}>
             <Form onSubmit={handleSubmit} />
             {loading && <Loader />}
             {error && <h1 className={css.error}>Error</h1>}
-            {movies.length === 0 && notFound()}
+            {notFound && <h1 className={css.notFound}>Search with name <span>"{search}"</span> not found</h1>}
             <div className={css.row}>
                 <ul className={css.items}>
                     {movies.map(({ id, title }) => (
@@ -95,10 +88,14 @@ export default function Movies() {
         </div>
         
     );
-    
-    
-    
-
-
-  
 }
+
+Movies.propTypes = {
+    movies: PropTypes.arrayOf(
+        PropTypes.shape({
+            id: PropTypes.number.isRequired,
+            title: PropTypes.string.isRequired,
+            poster_path: PropTypes.string,
+        })
+    ),
+};
