@@ -1,15 +1,11 @@
 import css from "./Menu.module.css";
 import { NavLink } from "react-router-dom";
 
-import PropTypes from "prop-types";
-
 
 const getClassName = ({ isActive }) => {
     const className = isActive ? `${css.link} ${css.active}` : css.link;
     return className;
 }
-
-
 
 const Menu = () => {
     return (
@@ -24,7 +20,3 @@ const Menu = () => {
 
 
 export default Menu;
-
-Menu.propTypes = {
-    isActive: PropTypes.bool,
-};

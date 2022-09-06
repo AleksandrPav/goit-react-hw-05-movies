@@ -3,10 +3,7 @@ import { getMovieCast } from "../../services/API";
 import { useParams} from "react-router-dom";
 import Loader from 'components/modules/Loader/Loader';
 
-
-
 import css from "./Cast.module.css";
-
 
 const Cast = () => {
     const [cast, setCast] = useState([]);

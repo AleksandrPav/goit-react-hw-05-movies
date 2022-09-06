@@ -5,10 +5,6 @@ import { BiCameraMovie } from 'react-icons/bi';
 import { Link, useLocation } from 'react-router-dom';
 import Loader from 'components/modules/Loader/Loader';
 
-import PropTypes from "prop-types";
-
-
-
 export default function HomePage() {
     const [movies, setMovies] = useState([]);
     const [error, setError] = useState(null);
@@ -52,21 +48,6 @@ export default function HomePage() {
             </div>
         </div>
     );
-
-
-    }
-
-
-HomePage.propTypes = {
-    movies: PropTypes.arrayOf(
-        PropTypes.shape({
-            id: PropTypes.number.isRequired,
-            title: PropTypes.string.isRequired,
-            poster_path: PropTypes.string.isRequired,
-        })
-    ),
-    error: PropTypes.string,
-    loading: PropTypes.bool,
-}
+ }
 
 

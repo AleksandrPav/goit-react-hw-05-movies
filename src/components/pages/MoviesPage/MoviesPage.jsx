@@ -6,17 +6,11 @@ import css from "./MoviesPage.module.css";
 import { Link, useSearchParams, useLocation } from "react-router-dom";
 import { BiCameraMovie } from 'react-icons/bi';
 
-import PropTypes from "prop-types";
-
-
-
-
 
 export default function Movies() {
     const [movies, setMovies] = useState([]);
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState(null);
-
 
     const location = useLocation();
 
@@ -28,7 +22,6 @@ export default function Movies() {
     const handleSubmit = (search) => {
         setSearchParams({ query: search });
     };
-
 
     useEffect(() => {
         if (!search) {
@@ -47,14 +40,8 @@ export default function Movies() {
                 setLoading(false);
             }
         };
-        fetchData();
-
-        
-    
+        fetchData(); 
     }, [search]);
-
- 
-
 
     return (
         
@@ -80,20 +67,6 @@ export default function Movies() {
                 </ul>
             </div>
         </div>
-
-       
-        
     );
     
 }
-
-
-Movies.propTypes = {
-    movies: PropTypes.arrayOf(
-        PropTypes.shape({
-            id: PropTypes.number.isRequired,
-            title: PropTypes.string.isRequired,
-            poster_path: PropTypes.string,
-        })
-    ),
-};

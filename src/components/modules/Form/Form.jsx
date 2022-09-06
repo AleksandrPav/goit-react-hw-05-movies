@@ -5,8 +5,6 @@ import PropTypes from "prop-types";
 
 import { toast } from "react-toastify";
 
-
-
 export default function Form({onSubmit}) {
     const [search, setSearch] = useState("");
     
@@ -30,7 +28,6 @@ export default function Form({onSubmit}) {
         setSearch("");
     };
     
-
     return (
         <div className={css.formContainer}>
         <form onSubmit={handleSubmit} className={css.form}>

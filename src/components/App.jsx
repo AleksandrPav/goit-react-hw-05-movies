@@ -6,9 +6,7 @@ import Loader from './modules/Loader/Loader';
 
 import { lazy, Suspense} from "react";
 
-
 import css from "./App.module.css";
-
 
 const Menu = lazy(() => import('./modules/Menu/Menu'));
 const Home = lazy(() => import("./pages/HomePage/HomePage"));
